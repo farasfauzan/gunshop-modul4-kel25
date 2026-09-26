@@ -2,7 +2,10 @@
 
 A dummy gunshop storefront built as a Progressive Web App. It runs offline
 with an app shell, a web app manifest, and a service worker, and uses React +
-Vite + Tailwind CSS.
+Vite + `vite-plugin-pwa` with plain CSS.
+
+- **Live:** https://gunshop-modul4-kel25.vercel.app
+- **Source:** https://github.com/farasfauzan/gunshop-modul4-kel25
 
 ## Setup
 
