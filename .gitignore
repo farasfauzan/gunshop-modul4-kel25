@@ -32,3 +32,4 @@ conventions/
 *.njsproj
 *.sln
 *.sw?
+.vercel
