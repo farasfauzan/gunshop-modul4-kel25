@@ -53,6 +53,48 @@ const GUNS = [
     description:
       'The other pump gun. Twin action bars, a simple safety on the tang, and a price that leaves money for ammunition.',
   },
+  {
+    name: 'Lee-Enfield Mk III',
+    type: 'Rifle',
+    caliber: '.303 British',
+    price: 549,
+    image: '/guns/lee-enfield.jpg',
+    description:
+      'The British service rifle for most of the twentieth century. Ten-round magazine, a bolt you can shoulder and ride, and a reputation for being indestructible in hands that were not always careful.',
+    credit: {
+      author: 'Armémuseum (Swedish Army Museum)',
+      license: 'CC BY-SA 3.0',
+      url: 'https://commons.wikimedia.org/wiki/File:Lee-Enfield_Mk_III_(No_1_Mk_3)_AM032056_noBG.png',
+    },
+  },
+  {
+    name: 'Winchester Model 1897',
+    type: 'Shotgun',
+    caliber: '12 Gauge',
+    price: 699,
+    image: '/guns/winchester-1897.jpg',
+    description:
+      'The trench gun. Built for a war fought from holes in the ground, and still the smoothest-handling pump that ever came off that line. Walnut furniture, exposed hammer, no apologies.',
+    credit: {
+      author: 'National Park Service — Hot Springs National Park',
+      license: 'Public domain',
+      url: 'https://commons.wikimedia.org/wiki/File:12_gauge_shotgun,_pump_type,_model_1897_Winchester;_Exposed_hammer;_reddish_hardwood_(possibly_cherry)_butt_stock;_pump_handle_(e5a4ca9b-5577-4977-9e81-821214b9c52d).jpg',
+    },
+  },
+  {
+    name: 'Walther P38N',
+    type: 'Pistol',
+    caliber: '9mm',
+    price: 629,
+    image: '/guns/walther-p38n.jpg',
+    description:
+      'A locked-brock pistol that stayed in production long after it stopped making sense. Field-strip in four moves, decocker instead of a safety, and a grip that fits a cold hand.',
+    credit: {
+      author: 'Askild Antonsen',
+      license: 'CC BY 2.0',
+      url: 'https://commons.wikimedia.org/wiki/File:Walther_P38N_(6825680204).jpg',
+    },
+  },
 ]
 
 export default GUNS

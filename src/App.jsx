@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import InstallButton from './components/InstallButton.jsx'
 import Catalog from './pages/Catalog.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -19,6 +20,7 @@ function App() {
         {tab === 'Contact' && <Contact />}
       </main>
 
+      <InstallButton />
       <Footer />
     </div>
   )

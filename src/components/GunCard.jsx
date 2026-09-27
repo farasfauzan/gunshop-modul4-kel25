@@ -25,6 +25,15 @@ function GunCard({ gun }) {
           {gun.type} · {gun.caliber} · <span className="price">${gun.price.toLocaleString()}</span>
         </p>
         <p>{gun.description}</p>
+        {gun.credit && (
+          <p className="credit">
+            Photo:{' '}
+            <a href={gun.credit.url} target="_blank" rel="noreferrer">
+              {gun.credit.author}
+            </a>{' '}
+            · {gun.credit.license}
+          </p>
+        )}
         <form method="dialog">
           <button className="popup-close">Close</button>
         </form>

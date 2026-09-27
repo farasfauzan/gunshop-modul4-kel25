@@ -137,6 +137,10 @@
 .card-img {
   width: 100%;
   height: auto;
+  /* Semua aset sudah 4:3; guard ini menjaga grid tetap seragam
+     walau nanti ada foto dengan rasio lain. */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   margin-bottom: 10px;
   border-bottom: 1px solid var(--line);
 }
@@ -220,4 +224,110 @@
 
 .footer p {
   margin: 0;
+}
+
+/* --- search + filter --- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 28px 0 0;
+}
+
+.search {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 9px 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font: inherit;
+  color: var(--ink);
+}
+
+.search::placeholder {
+  color: var(--steel);
+}
+
+.search:focus {
+  outline: 2px solid var(--brass);
+  outline-offset: -1px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--steel);
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--brass);
+  color: var(--ink);
+}
+
+.chip.active {
+  color: var(--ink);
+  border-color: var(--brass);
+  background: #fbf6ec;
+}
+
+.empty {
+  margin: 0;
+  padding: 56px 0;
+  border: 1px dashed var(--line);
+  text-align: center;
+  color: var(--steel);
+  font-size: 1.1rem;
+}
+
+/* --- install button --- */
+
+.install {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 24px 28px;
+}
+
+.install-btn {
+  padding: 10px 20px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  cursor: pointer;
+}
+
+.install-btn:hover {
+  background: none;
+  color: var(--ink);
+}
+
+.install-hint {
+  color: var(--steel);
+  font-size: 0.9rem;
+}
+
+/* --- kredit foto di popup --- */
+
+.popup .credit {
+  font-size: 0.85rem;
+  color: var(--steel);
+}
+
+.popup .credit a {
+  color: var(--steel);
 }
