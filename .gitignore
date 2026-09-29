@@ -33,3 +33,6 @@ conventions/
 *.sln
 *.sw?
 .vercel
+
+# Screenshot lokal untuk laporan praktikum
+.report-shots/
