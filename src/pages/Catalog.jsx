@@ -2,16 +2,22 @@ import { useMemo, useState } from 'react'
 import GUNS from '../data/guns.js'
 import GunCard from '../components/GunCard.jsx'
 
-function Catalog() {
+const SORTS = [
+  { key: 'name', label: 'Name' },
+  { key: 'price', label: 'Price' },
+]
+
+function Catalog({ onAdd }) {
   const [query, setQuery] = useState('')
   const [type, setType] = useState('All')
+  const [sort, setSort] = useState({ key: 'name', dir: 'asc' })
 
   // Turunkan daftar tipe dari data, jadi filter otomatis ikut saat data bertambah.
   const types = useMemo(() => ['All', ...new Set(GUNS.map((g) => g.type))], [])
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return GUNS.filter((gun) => {
+    const filtered = GUNS.filter((gun) => {
       const byType = type === 'All' || gun.type === type
       if (!byType) return false
       if (!q) return true
@@ -21,7 +27,21 @@ function Catalog() {
         gun.caliber.toLowerCase().includes(q)
       )
     })
-  }, [query, type])
+
+    const dir = sort.dir === 'asc' ? 1 : -1
+    return filtered.sort((a, b) =>
+      sort.key === 'price'
+        ? (a.price - b.price) * dir
+        : a.name.localeCompare(b.name) * dir,
+    )
+  }, [query, type, sort])
+
+  // Menekan tombol yang sedang aktif membalik arah urutannya.
+  const onSort = (key) => {
+    setSort((s) => (s.key === key ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' } : { key, dir: 'asc' }))
+  }
+
+  const flipDir = () => setSort((s) => ({ ...s, dir: s.dir === 'asc' ? 'desc' : 'asc' }))
 
   return (
     <>
@@ -58,6 +78,31 @@ function Catalog() {
           </div>
         </div>
 
+        <div className="controls sorts">
+          <span className="sorts-label">Sort by</span>
+          <div className="filters" role="group" aria-label="Sort catalog">
+            {SORTS.map((s) => (
+              <button
+                key={s.key}
+                type="button"
+                className={sort.key === s.key ? 'chip active' : 'chip'}
+                aria-pressed={sort.key === s.key}
+                onClick={() => onSort(s.key)}
+              >
+                {s.label}
+              </button>
+            ))}
+            <button
+              type="button"
+              className="chip dir"
+              onClick={flipDir}
+              aria-label={sort.dir === 'asc' ? 'Ascending, click for descending' : 'Descending, click for ascending'}
+            >
+              {sort.dir === 'asc' ? '↑' : '↓'}
+            </button>
+          </div>
+        </div>
+
         <div className="list-head">
           <h2>Current stock</h2>
           <span className="count">
@@ -68,7 +113,7 @@ function Catalog() {
         {visible.length > 0 ? (
           <ul className="stock">
             {visible.map((gun) => (
-              <GunCard key={gun.name} gun={gun} />
+              <GunCard key={gun.name} gun={gun} onAdd={onAdd} />
             ))}
           </ul>
         ) : (
