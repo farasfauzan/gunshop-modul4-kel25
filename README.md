@@ -32,6 +32,10 @@ npm run lint     # oxlint
   `no guns match`.
 - **Filter by type** — the chip list is derived from the data, so it picks up
   new types automatically.
+- **Sort** — a toggle between name and price, with a direction button that
+  flips ascending/descending.
+- **Cart** — an add button on every card, a live item-count badge in the
+  header, plus a cart page with quantity controls and a running total.
 
 ## Structure
 
@@ -44,18 +48,19 @@ npm run lint     # oxlint
 │   └── guns/               # product images (SVG silhouettes + photos)
 └── src/
     ├── main.jsx            # entry, mounts <App/>
-    ├── App.jsx             # app shell: tab state, header/nav/content/install/footer
+    ├── App.jsx             # app shell: tab state, cart state, header/nav/content/install/footer
     ├── App.css             # app shell styles
     ├── index.css           # global styles
     ├── components/
-    │   ├── Header.jsx      # brand + nav
-    │   ├── GunCard.jsx     # single product card
+    │   ├── Header.jsx      # brand + nav + cart badge
+    │   ├── GunCard.jsx     # single product card, detail dialog, add-to-cart
     │   ├── InstallButton.jsx
     │   └── Footer.jsx
     ├── data/
     │   └── guns.js         # dummy product data
     └── pages/
-        ├── Catalog.jsx     # search + filter + product grid
+        ├── Catalog.jsx     # search + filter + sort + product grid
+        ├── Cart.jsx        # quantity controls and total
         ├── About.jsx
         └── Contact.jsx
 ```
